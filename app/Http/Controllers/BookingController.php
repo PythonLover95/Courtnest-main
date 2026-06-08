@@ -114,15 +114,4 @@ class BookingController extends Controller
 
         return redirect()->route('dashboard')->with('success', 'Payment Successful! Your court is secured.');
     }
-
-    public function cancel(Booking $booking)
-    {
-        if ($booking->user_id !== Auth::id()) {
-            abort(403);
-        }
-
-        $booking->update(['status' => 'cancelled']);
-
-        return back()->with('success', 'Booking has been cancelled.');
-    }
 }
